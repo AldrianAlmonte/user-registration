@@ -3,15 +3,34 @@
 // 
 
 class User {
-    constructor(fname, lname,email,password,gender,age,addrs,phone,pmethod,fcolor){
+    constructor(fname, lname,email,password){
     this.firstName=fname;
     this.lastName=lname;
     this.email=email;
     this.password=password;
-    this.gender=gender;
-    this.age=age;
-    this.address=addrs;
+    // this.gender=gender;
+    // this.age=age;
+    // this.address=addrs;
     }
+}
+
+function isValid(user){
+    //return false when user is not valid
+    //return true when user is valid
+    let valid=true;
+    $("input").removeClass("input-error");
+    if(user.email.length==0){
+        valid=false;
+        console.log("Add an email");
+        $("#txtEmail").addClass("input-error");
+    }
+    if(user.password.length==0){
+        valid=false;
+        console.log("Add a password");
+        $("#txtEmail").addClass("input-error");
+
+    }
+    return valid;
 }
 
 function register(){
@@ -19,13 +38,16 @@ function register(){
     let inputlName = $("#txtLastName").val();
     let inputEmail = $("#txtEmail").val();
     let inputPassword = $("#txtPassword").val();
-    let inputGender = $("#txtGender").val();
-    let inputAge = $("#txtAge").val();
-    let inputAddress = $("#txtAddress").val();
+    // let inputGender = $("#txtGender").val();
+    // // let inputAge = $("#txtAge").val();
+    // // let inputAddress = $("#txtAddress").val();
 
 
     let newUser = new User (inputfName,inputlName,inputEmail,inputPassword);
-    console.log(newUser);
+    if(isValid(newUser)){
+        saveUser(newUser);
+    }
+    
 }
 
 function init(){
@@ -36,5 +58,4 @@ function init(){
     let user1 = new User("Crystal","Garcia","cg@cg.com","4567");
     console.log(user0,user1)
 }
-
 window.onload=init;
