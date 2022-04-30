@@ -32,6 +32,19 @@ function isValid(user){
     }
     return valid;
 }
+function validatePass(){
+    //get the value from the input
+    let txtPass=$("#txtPassword");
+    let password=txtPass.val();
+    if(password.length<6){ //compare if the password is < 6 characters? (if statement)
+      txtPass.css('border','2px solid red');//jquery function to change css  
+    }else{
+        txtPass.css('border',"2px solid green");
+    }
+    //$ function to change the css
+        
+}
+
 
 function register(){
     let inputfName = $("#txtFirstName").val();//getting the value
@@ -45,17 +58,15 @@ function register(){
 
     let newUser = new User (inputfName,inputlName,inputEmail,inputPassword);
     if(isValid(newUser)){
-        saveUser(newUser);
+        saveUser(newUser);//this fn is in the storeManagement
     }
     
 }
 
 function init(){
-    console.log("Init function");
-
-    //create two users and display on the console
-    let user0 = new User("Ben","Sanchez","bs@bs.com","1234");
-    let user1 = new User("Crystal","Garcia","cg@cg.com","4567");
-    console.log(user0,user1)
+    console.log("Register");
+    //hook events
+    $("#txtPassword").change(validatePass);//it is executed everytime that the key is up
+  
 }
 window.onload=init;
