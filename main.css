@@ -35,6 +35,17 @@ header.site-init{
     margin-right: 30px;
     text-decoration: none;
 }
-input-error{
+.input-error{
     border: solid red;
+}
+.alert-error{
+    background-color: #f8acac;
+    color: #c95353;
+    padding: 3px;
+    margin: 1rem 0 1rem 1rem;
+    text-align: center;
+    border-radius: 5px;
+}
+.hide{
+    display: none;
 }

@@ -37,14 +37,23 @@ function validatePass(){
     let txtPass=$("#txtPassword");
     let password=txtPass.val();
     if(password.length<6){ //compare if the password is < 6 characters? (if statement)
-      txtPass.css('border','2px solid red');//jquery function to change css  
+      txtPass.css("background","#ff9898");//jquery function to change css
+      displayError("the password is too short!");
     }else{
-        txtPass.css('border',"2px solid green");
+        txtPass.css("border","2px solid green");
+
     }
     //$ function to change the css
         
 }
 
+
+function displayError(msg){
+    $("#alertError").removeClass("hide").text(msg);
+}
+function hideError(){
+    $("#alertError").addClass("hide");
+}
 
 function register(){
     let inputfName = $("#txtFirstName").val();//getting the value
@@ -59,14 +68,22 @@ function register(){
     let newUser = new User (inputfName,inputlName,inputEmail,inputPassword);
     if(isValid(newUser)){
         saveUser(newUser);//this fn is in the storeManagement
+
+        // clearInput();
     }
     
 }
+// function clearInput(){
+//     inputfName.val="";
+//     inputlName.val="";
+//     inputEmail.val="";
+//     inputPassword.val="";
+// }
 
 function init(){
     console.log("Register");
     //hook events
-    $("#txtPassword").change(validatePass);//it is executed everytime that the key is up
+    $("#txtPassword").keyup(validatePass);//it is executed everytime that the key is up
   
 }
 window.onload=init;

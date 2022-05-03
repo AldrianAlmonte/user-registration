@@ -15,7 +15,7 @@ function readUsers(){
         return[];//creating the array
     }else{
         //we have data
-        let list = JSON.parse(data);//passing JSON to obj
-        return list;//
+        let list = JSON.parse(data);//parsing JSON to obj
+        return list;//return the array of obj
     }
 }
